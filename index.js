@@ -82,11 +82,13 @@ newspapers.forEach(newspaper => {
         })
 })
 
-app.get('/', (req, res) => {
+app.get('/', (req, res
+    ) => {
     res.json('Welcome to my Climate Change News API')
 })
 
 app.get('/news', (req, res) => {
+    res.set({"Access-Control-Allow-Origin" : "*"})
     res.json(articles)
 })
 
@@ -103,7 +105,7 @@ app.get('/news/:newspaperId', (req, res) => {
             const $ = cheerio.load(html)
             const specificArticles = []
 
-            $('a:contains("health")', html).each(function () {
+            $('a:contains("Health")', html).each(function () {
                 const title = $(this).text()
                 const url = $(this).attr('href')
                 specificArticles.push({
